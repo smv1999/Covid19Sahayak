@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#00ccff</color>
+    <color name="colorPrimaryDark">#00ccff</color>
+    <color name="colorAccent">#00ccff</color>
+    <color name="darkPrimary">#212121</color>
+    <color name="darkPrimaryDark">#000000</color>
+    <color name="whitecolor">#FFFFFF</color>
+    <color name="switchcolor">#f0f0f0</color>
+    <color name="colorTitles">#284452</color>
+    <color name="colorBlueDark">#006381</color>
+    <color name="colorBlueLight">#f3f7f9</color>
+    <color name="colorPurpleDark">#600090</color>
+    <color name="colorPurpleLight">#F0E3F7</color>
+    <color name="colorNewDark">#00AC9A</color>
+    <color name="colorGreenDark">#548700</color>
+    <color name="colorGreenLight">#e5f6ca</color>
+    <color name="colorRedDark">#9a0000</color>
+    <color name="colorRedLight">#f6c8c8</color>
+    <color name="colorBackEdge">#f1f5f6</color>
+    <color name="colorBackMiddle">#fbfbfb</color>
+    <color name="colorHighlights">#e16915</color>
+    <color name="colorStrokeDark">#d7dddf</color>
+    <color name="colorStrokeLight">#e9eff2</color>
+    <color name="colorStrokeSearch">#b9bfc1</color>
+    <color name="colorShadow">#878787</color>
+    <color name="light_red">#FFCDD2</color>
+    <color name="light_green">#C8E6C9</color>
+    <color name="light_blue">#BBDEFB</color>
+    <color name="light_yellow">#FFECB3</color>
+
+    <color name="dark_red">#D32F2F</color>
+    <color name="dark_green">#388E3C</color>
+    <color name="dark_blue">#1976D2</color>
+    <color name="dark_yellow">#FBC02D</color>
+
+    <color name="white">#FFFFFF</color>
+
+    <color name="colorPage">#e6f2ff</color>
+    <color name="backgroundcolor">#fcfcfc</color>
+    <color name="lightgray">#ededed</color>
+    <color name="deeppurple">#7c4dff</color>
+    <color name="yello">#ffb300</color>
+    <color name="green">#00bfa5</color>
+    <color name="darkblue">#23283a</color>
+    <color name="testcolorblue">#152b38</color>
+    <color name="pink">#fe104d</color>
+
+    <color name="black_overlay">#66000000</color>
+</resources>
