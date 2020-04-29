@@ -85,8 +85,11 @@ public class DashboardActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.toll_free:
-                        //create Toll Free Numbers Activity
-                        Toast.makeText(DashboardActivity.this, "Toll-Free Numbers", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(DashboardActivity.this,TollFreeNumberActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        return true;
+                    case R.id.action_settings:
+                        startActivity(new Intent(DashboardActivity.this,SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        return true;
                 }
                 return false;
             }
@@ -278,10 +281,7 @@ public class DashboardActivity extends AppCompatActivity {
             case R.id.global_cases:
                 startActivity(new Intent(DashboardActivity.this,MainActivity.class));
                 return true;
-            case R.id.action_settings:
-                // Settings Activity
-                startActivity(new Intent(DashboardActivity.this,SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                return true;
+
             default:
                 return actionBarDrawerToggle.onOptionsItemSelected(item);
         }

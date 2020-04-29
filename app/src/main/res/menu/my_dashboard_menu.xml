@@ -4,13 +4,9 @@
     <item
         android:id="@+id/global_cases"
         android:icon="@drawable/globeimage"
-        android:title="India"
+        android:title="Globe"
         app:showAsAction="always" />
-    <item
-        android:id="@+id/action_settings"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_settings"
-        android:title="Settings"/>
+
     <item android:id="@+id/refreshDashboard"
         android:icon="@drawable/ic_refresh"
         android:title="Refresh"

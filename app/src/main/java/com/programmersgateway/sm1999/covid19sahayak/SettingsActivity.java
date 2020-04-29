@@ -116,6 +116,11 @@ public class SettingsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(SettingsActivity.this,DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
+        super.onBackPressed();
+    }
 
     @Override
     protected void onPause() {
