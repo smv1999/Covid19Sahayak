@@ -16,4 +16,5 @@
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Close</string>
     <string name="base_url">https://api.covid19india.org/</string>
+    <string name="title_activity_medical_stores">Map</string>
 </resources>

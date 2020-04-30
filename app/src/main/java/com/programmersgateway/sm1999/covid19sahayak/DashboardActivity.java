@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -89,6 +90,12 @@ public class DashboardActivity extends AppCompatActivity {
                         return true;
                     case R.id.action_settings:
                         startActivity(new Intent(DashboardActivity.this,SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        return true;
+                    case R.id.medical_stores:
+                        String url = "https://www.google.com/maps/search/medical+store+near+me/@13.0452436,80.1986642,15z/data=!3m1!4b1";
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        intent.setClassName("com.google.android.apps.maps","com.google.android.maps.MapsActivity");
+                        startActivity(intent);
                         return true;
                 }
                 return false;
