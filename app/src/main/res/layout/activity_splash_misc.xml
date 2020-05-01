@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashScreenActivity">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:src="@drawable/coronavirus"
+        android:id="@+id/app_icon"
+        android:layout_centerInParent="true"
+        android:layout_height="150dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="@string/app_desc"
+        android:layout_marginTop="10dp"
+        android:textColor="#808080"
+        android:textStyle="italic"
+        android:layout_below="@+id/app_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

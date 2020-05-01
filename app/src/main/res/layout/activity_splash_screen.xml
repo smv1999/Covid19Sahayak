@@ -7,19 +7,11 @@
     tools:context=".SplashScreenActivity">
 
     <ImageView
-        android:layout_width="150dp"
-        android:src="@drawable/coronavirus"
+        android:layout_width="match_parent"
+        android:src="@drawable/splash_screen"
         android:id="@+id/app_icon"
         android:layout_centerInParent="true"
-        android:layout_height="150dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="@string/app_desc"
-        android:layout_marginTop="10dp"
-        android:textColor="#808080"
-        android:textStyle="italic"
-        android:layout_below="@+id/app_icon"
-        android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"/>
+
 
 </RelativeLayout>

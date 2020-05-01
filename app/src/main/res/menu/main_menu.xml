@@ -2,20 +2,35 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:title="World Cases"
+        android:icon="@drawable/globeicon"
+        android:id="@+id/world_cases"
+        />
+
     <item android:title="Toll Free Number"
         android:icon="@drawable/ic_toll_free_number"
         android:id="@+id/toll_free"
         />
 
+    <item
+        android:id="@+id/medical_stores"
+        android:icon="@drawable/ic_search"
+        android:title="Medical Stores Nearby"/>
+
+    <item
+        android:id="@+id/pm_cares_fund"
+        android:icon="@drawable/rupee"
+        android:title="PM CARES Fund"/>
+
+    <item
+        android:id="@+id/register"
+        android:icon="@drawable/ic_person"
+        android:title="Join as Volunteer"/>
 
     <item
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_settings"
         android:title="Settings"/>
 
-    <item
-        android:id="@+id/medical_stores"
-        android:icon="@drawable/ic_search"
-        android:title="Medical Stores Nearby"/>
 
 </menu>

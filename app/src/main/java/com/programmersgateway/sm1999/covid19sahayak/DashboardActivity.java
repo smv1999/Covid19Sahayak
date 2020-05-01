@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -17,6 +20,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,9 +37,9 @@ import retrofit2.Response;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    private CardView cvConfirmed, cvActive, cvRecovered, cvDeath, cvTestYourSelf, cvSymptoms;
+    private CardView cvConfirmed, cvActive, cvRecovered, cvDeath, cvSymptoms;
     private TextView tvConfirmedCt, tvActiveCt, tvRecoveredCt, tvDeathCt,lastupdate;
-    private TextView tvConfirmed, tvActive, tvRecovered, tvDeath, tvTestYourSelf, tvSymptoms;
+    private TextView tvConfirmed, tvActive, tvRecovered, tvDeath, tvSymptoms;
     DashboardResponse dashboardResponse;
     Intent intent;
     private ConnectionDetector connectionDetector;
@@ -43,6 +47,8 @@ public class DashboardActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
+    int dark = 0;
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -65,6 +71,7 @@ public class DashboardActivity extends AppCompatActivity {
             getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.darkPrimary)));
             Window window = getWindow();
             window.setStatusBarColor(getResources().getColor(R.color.darkPrimaryDark));
+            dark = 1;
         }
         else
             setTheme(R.style.AppTheme);
@@ -81,6 +88,7 @@ public class DashboardActivity extends AppCompatActivity {
         View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
 
 
+        // main menu items
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -97,11 +105,28 @@ public class DashboardActivity extends AppCompatActivity {
                         intent.setClassName("com.google.android.apps.maps","com.google.android.maps.MapsActivity");
                         startActivity(intent);
                         return true;
+                    case R.id.pm_cares_fund:
+                        startActivity(new Intent(DashboardActivity.this,PMCaresFundActivity.class));
+                        return true;
+                    case R.id.world_cases:
+                        startActivity(new Intent(DashboardActivity.this,MainActivity.class));
+                        return true;
+                    case R.id.register:
+                        Uri uri = Uri.parse("https://self4society.mygov.in/");
+                        Intent reg = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(reg);
+                        return true;
                 }
                 return false;
             }
         });
         initViews();
+        pulsatingEffect(cvConfirmed);
+        pulsatingEffect(cvActive);
+        pulsatingEffect(cvRecovered);
+        pulsatingEffect(cvDeath);
+        pulsatingEffect(cvSymptoms);
+
         connectionDetector = new ConnectionDetector(this);
         if (connectionDetector.isNetworkConnected() && connectionDetector.internetIsConnected()){
 
@@ -111,7 +136,50 @@ public class DashboardActivity extends AppCompatActivity {
             finish();
         }
 
+        showdialog("Have a look at the Covid updates of Karnataka.",dark);
 
+
+    }
+
+    public void showdialog(String msg,int dark_theme){
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(true);
+        if (dark_theme==1)
+            dialog.setContentView(R.layout.dialog_dark);
+        else
+            dialog.setContentView(R.layout.dialog);
+
+        TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
+        text.setText(msg);
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Go to Karnataka Dashboard
+                Uri uri = Uri.parse("https://covid19.karnataka.gov.in/covid-dashboard/dashboard.html");
+                Intent reg = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(reg);
+            }
+        });
+
+        dialog.show();
+
+    }
+
+    public void pulsatingEffect(CardView cardView)
+    {
+        ObjectAnimator scaleDown = ObjectAnimator.ofPropertyValuesHolder(
+                cardView,
+                PropertyValuesHolder.ofFloat("scaleX", 1.03f),
+                PropertyValuesHolder.ofFloat("scaleY", 1.03f));
+        scaleDown.setDuration(900);
+
+        scaleDown.setRepeatCount(ObjectAnimator.INFINITE);
+        scaleDown.setRepeatMode(ObjectAnimator.REVERSE);
+
+        scaleDown.start();
     }
 
     public void initViews() {
@@ -121,7 +189,6 @@ public class DashboardActivity extends AppCompatActivity {
         cvActive = findViewById(R.id.cvActive);
         cvRecovered = findViewById(R.id.cvRecovered);
         cvDeath = findViewById(R.id.cvDeath);
-        cvTestYourSelf = findViewById(R.id.cvTestYourSelf);
         cvSymptoms = findViewById(R.id.cvSymptoms);
 
         //textview count
@@ -135,7 +202,6 @@ public class DashboardActivity extends AppCompatActivity {
         tvActive = findViewById(R.id.tvActive);
         tvRecovered = findViewById(R.id.tvRecovered);
         tvDeath = findViewById(R.id.tvDeath);
-        tvTestYourSelf = findViewById(R.id.tvTestYourSelf);
         tvSymptoms = findViewById(R.id.tvSymptoms);
         lastupdate = findViewById(R.id.lastupdate);
 
@@ -150,7 +216,6 @@ public class DashboardActivity extends AppCompatActivity {
                 intent.putExtra("type", "Confirmed");
                 intent.putExtra("StateList", (Serializable) dashboardResponse.getStatewise());
                 startActivity(intent);
-                //toast("Confirmed");
                 break;
 
             case R.id.cvActive:
@@ -158,7 +223,6 @@ public class DashboardActivity extends AppCompatActivity {
                 intent.putExtra("type", "Active");
                 intent.putExtra("StateList", (Serializable) dashboardResponse.getStatewise());
                 startActivity(intent);
-//                toast("Active");
                 break;
 
             case R.id.cvRecovered:
@@ -166,7 +230,6 @@ public class DashboardActivity extends AppCompatActivity {
                 intent.putExtra("type", "Recovered");
                 intent.putExtra("StateList", (Serializable) dashboardResponse.getStatewise());
                 startActivity(intent);
-                //toast("Recovered");
                 break;
 
             case R.id.cvDeath:
@@ -174,17 +237,12 @@ public class DashboardActivity extends AppCompatActivity {
                 intent.putExtra("type", "Death");
                 intent.putExtra("StateList", (Serializable) dashboardResponse.getStatewise());
                 startActivity(intent);
-//                toast("Death");
                 break;
 
-            case R.id.cvTestYourSelf:
-                toast("TestYourSelf");
-                break;
 
             case R.id.cvSymptoms:
                 intent = new Intent(DashboardActivity.this, WebViewActivity.class);
                 startActivity(intent);
-                //toast("Symptoms");
                 break;
 
 

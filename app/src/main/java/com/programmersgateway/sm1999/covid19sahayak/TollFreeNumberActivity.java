@@ -13,6 +13,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.Serializable;
@@ -22,6 +25,8 @@ public class TollFreeNumberActivity extends AppCompatActivity {
     CardView helpline_number;
     int CALL_CODE = 1;
     SharedPrefs sharedPrefs;
+    Animation textanimation;
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +44,9 @@ public class TollFreeNumberActivity extends AppCompatActivity {
             setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_toll_free_number);
         helpline_number = findViewById(R.id.helpline_number);
+        textView = findViewById(R.id.toll_free_title);
+        textanimation = AnimationUtils.loadAnimation(this,R.anim.textanimation);
+        textView.startAnimation(textanimation);
 
 
 
@@ -69,6 +77,11 @@ public class TollFreeNumberActivity extends AppCompatActivity {
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
                 emailIntent.putExtra(Intent.EXTRA_TEXT, "Body");
                 startActivity(Intent.createChooser(emailIntent, "Send email..."));
+                break;
+            case R.id.state_helpline:
+                Uri uri = Uri.parse("https://www.mohfw.gov.in/pdf/coronvavirushelplinenumber.pdf");
+                Intent pdf = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(pdf);
                 break;
             default:
                 Toast.makeText(this, "Default!", Toast.LENGTH_SHORT).show();

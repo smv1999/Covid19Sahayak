@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:text="Helpline Numbers and Support"
         android:layout_marginTop="20dp"
+        android:id="@+id/toll_free_title"
         android:layout_gravity="center"
         android:textStyle="bold"
         android:textSize="18sp"
@@ -119,14 +120,20 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
     <androidx.cardview.widget.CardView
         android:id="@+id/helpline_email"
         android:layout_width="160dp"
         android:layout_height="190dp"
-        android:layout_marginTop="20dp"
         android:clickable="true"
         android:layout_gravity="center"
-        android:layout_margin="10dp"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
         android:onClick="onClick">
@@ -167,7 +174,55 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/state_helpline"
+            android:layout_width="160dp"
+            android:layout_height="190dp"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:onClick="onClick">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/deeppurple"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/cerclebackgroundpurple"
+                    android:padding="10dp"
+                    app:srcCompat="@drawable/ic_toll_free_black" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/lightgray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="State Helpline Numbers"
+                    android:textColor="@color/colorPurpleDark" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="View Full List"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
 
 </LinearLayout>
