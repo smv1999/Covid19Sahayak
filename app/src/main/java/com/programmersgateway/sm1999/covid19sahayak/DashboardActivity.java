@@ -4,16 +4,25 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.NotificationCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,6 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.android.gms.maps.model.Dash;
 import com.google.android.material.navigation.NavigationView;
 import com.programmersgateway.sm1999.covid19sahayak.network.ConnectionDetector;
 import com.programmersgateway.sm1999.covid19sahayak.network.Retrofit.RFInterface;
@@ -34,6 +44,8 @@ import com.programmersgateway.sm1999.covid19sahayak.network.Utility;
 import java.io.Serializable;
 
 import retrofit2.Response;
+
+import static android.media.RingtoneManager.getDefaultUri;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -48,7 +60,9 @@ public class DashboardActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     int dark = 0;
-
+    NotificationCompat.Builder notificationBuilder;
+    NotificationManager notificationManager;
+    String NOTIFICATION_CHANNEL_ID;
     @Override
     protected void onResume() {
         super.onResume();
@@ -100,10 +114,7 @@ public class DashboardActivity extends AppCompatActivity {
                         startActivity(new Intent(DashboardActivity.this,SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         return true;
                     case R.id.medical_stores:
-                        String url = "https://www.google.com/maps/search/medical+store+near+me/@13.0452436,80.1986642,15z/data=!3m1!4b1";
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                        intent.setClassName("com.google.android.apps.maps","com.google.android.maps.MapsActivity");
-                        startActivity(intent);
+                        startActivity(new Intent(DashboardActivity.this,MedicalStoreWebView.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         return true;
                     case R.id.pm_cares_fund:
                         startActivity(new Intent(DashboardActivity.this,PMCaresFundActivity.class));
@@ -115,6 +126,15 @@ public class DashboardActivity extends AppCompatActivity {
                         Uri uri = Uri.parse("https://self4society.mygov.in/");
                         Intent reg = new Intent(Intent.ACTION_VIEW, uri);
                         startActivity(reg);
+                        return true;
+                    case R.id.coronamap:
+                        startActivity(new Intent(DashboardActivity.this,CoronavirusMapActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        return true;
+                    case R.id.about:
+                        startActivity(new Intent(DashboardActivity.this,AboutActivity.class));
+                        return true;
+                    case R.id.learn_more:
+                        startActivity(new Intent(DashboardActivity.this,LearnMoreActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         return true;
                 }
                 return false;
@@ -141,6 +161,58 @@ public class DashboardActivity extends AppCompatActivity {
 
     }
 
+    public void setNotification()
+    {
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        NOTIFICATION_CHANNEL_ID = "my_channel_id_01";
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "My Notifications", NotificationManager.IMPORTANCE_HIGH);
+
+            // Configure the notification channel.
+            notificationChannel.setDescription("Channel description");
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.RED);
+            notificationChannel.setVibrationPattern(new long[]{0, 1000, 500, 1000});
+            notificationChannel.enableVibration(true);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+
+        int requestID = (int) System.currentTimeMillis();
+
+        Uri alarmSound = getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+        Intent notificationIntent = new Intent(getApplicationContext(), MainActivity.class);
+
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+        PendingIntent contentIntent = PendingIntent.getActivity(this, requestID,notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent dismissIntent = NotificationActivity.getDismissIntent(1, getApplicationContext());
+
+
+        notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
+
+        String message = "Catch up the live updates about covid-19. Total death toll in India reaches "+dashboardResponse.getStatewise().get(0).getDeaths()+" Click to see the World Cases!";
+
+        notificationBuilder.setAutoCancel(true)
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setWhen(System.currentTimeMillis())
+                .setSmallIcon(R.drawable.coronavirus)
+                .setTicker("Hearty365")
+                .setContentTitle("Live Updates")
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText(message))
+                .setContentText(message)
+                .setContentInfo("Info")
+                .setSound(alarmSound)
+                .setContentIntent(contentIntent)
+                .setOngoing(true)
+                .addAction(R.drawable.ic_close,"Close",dismissIntent);
+
+
+        notificationManager.notify(1, notificationBuilder.build()); /*notification id*/
+    }
+
     public void showdialog(String msg,int dark_theme){
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -158,9 +230,7 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Go to Karnataka Dashboard
-                Uri uri = Uri.parse("https://covid19.karnataka.gov.in/covid-dashboard/dashboard.html");
-                Intent reg = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(reg);
+               startActivity(new Intent(DashboardActivity.this,KarnatakaDashboardActivity.class));
             }
         });
 
@@ -181,6 +251,8 @@ public class DashboardActivity extends AppCompatActivity {
 
         scaleDown.start();
     }
+
+
 
     public void initViews() {
 
@@ -322,6 +394,7 @@ public class DashboardActivity extends AppCompatActivity {
         tvRecoveredCt.setText(dashboardResponse.getStatewise().get(0).getRecovered());
         tvDeathCt.setText(dashboardResponse.getStatewise().get(0).getDeaths());
         lastupdate.setText("Last Update : " + dashboardResponse.getStatewise().get(0).getLastupdatedtime());
+        setNotification();
     }
 
     @Override

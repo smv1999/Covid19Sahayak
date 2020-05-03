@@ -12,7 +12,19 @@
         android:roundIcon="@mipmap/ic_coronavirus"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PMCaresFundActivity"></activity>
+        <activity android:name=".NotificationActivity"
+            android:taskAffinity=""
+            android:excludeFromRecents="true">
+        </activity>
+        <activity android:name=".LearnMoreActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".AboutActivity" android:screenOrientation="portrait" />
+        <activity android:name=".KarnatakaVolunteersActivity" android:screenOrientation="portrait" />
+        <activity android:name=".CoronavirusMapActivity" android:screenOrientation="portrait" />
+        <activity android:name=".KarnatakaDashboardActivity" android:screenOrientation="portrait" />
+        <activity android:name=".MedicalStoreWebView" android:screenOrientation="portrait" />
+        <activity
+            android:name=".PMCaresFundActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SplashScreenActivity"
             android:screenOrientation="portrait"

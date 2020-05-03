@@ -291,6 +291,7 @@
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
+
     </LinearLayout>
     </ScrollView>
     <com.google.android.material.navigation.NavigationView

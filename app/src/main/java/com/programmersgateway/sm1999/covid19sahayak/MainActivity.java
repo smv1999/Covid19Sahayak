@@ -500,8 +500,8 @@ public class MainActivity extends AppCompatActivity {
 
                         @Override
                         public void run() {
-                            Toast.makeText(MainActivity.this, "Network Connection Error!",
-                                    Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(MainActivity.this,ErrorActivity.class));
+                            finish();
                         }
                     });
                 }

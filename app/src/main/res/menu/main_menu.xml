@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:title="About Covid-19"
+        android:icon="@drawable/ic_about"
+        android:id="@+id/about"
+        />
+
     <item android:title="World Cases"
         android:icon="@drawable/globeicon"
         android:id="@+id/world_cases"
@@ -28,9 +33,19 @@
         android:title="Join as Volunteer"/>
 
     <item
+        android:id="@+id/coronamap"
+        android:icon="@drawable/locationicon"
+        android:title="Cornonavirus Map"/>
+
+    <item
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_settings"
         android:title="Settings"/>
+
+    <item
+        android:id="@+id/learn_more"
+        android:icon="@drawable/learn_more"
+        android:title="Learn More"/>
 
 
 </menu>
