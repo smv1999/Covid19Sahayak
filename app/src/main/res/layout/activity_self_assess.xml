@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelfAssessActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_gravity="start"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        android:text="Please note that information from this questionairre will be used for monitoring and management of the current health crisis and research in the fight against COVID-19."
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="Are you experiencing any of the following symptoms?"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="start"
+        android:textSize="16sp"
+        android:layout_height="wrap_content"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:id="@+id/question1"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="wrap_content"
+            android:id="@+id/q1op1"
+            android:textSize="14sp"
+            android:text="Cough"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="wrap_content"
+            android:text="Fever"
+            android:textSize="14sp"
+            android:id="@+id/q1op2"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="wrap_content"
+            android:text="Difficulty in Breathing"
+            android:textSize="14sp"
+            android:id="@+id/q1op3"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="wrap_content"
+            android:text="None of the above"
+            android:textSize="14sp"
+            android:id="@+id/q1op4"
+            android:layout_height="wrap_content"/>
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="Have you ever had any of the following?"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        android:layout_gravity="start"
+        android:layout_height="wrap_content"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:id="@+id/question2"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="wrap_content"
+            android:id="@+id/q2op1"
+            android:textSize="14sp"
+            android:text="Diabetes"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="wrap_content"
+            android:textSize="14sp"
+            android:text="Hypertension"
+            android:id="@+id/q2op2"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="wrap_content"
+            android:text="Lung disease"
+            android:textSize="14sp"
+            android:id="@+id/q2op3"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="wrap_content"
+            android:text="Heart Disease"
+            android:id="@+id/q2op4"
+            android:textSize="14sp"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="wrap_content"
+            android:text="None of the above"
+            android:id="@+id/q2op5"
+            android:textSize="14sp"
+            android:layout_height="wrap_content"/>
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="Have you travelled anywhere internationally in the last 28-45 days?"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="start"
+        android:textSize="16sp"
+        android:layout_height="wrap_content"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:id="@+id/question3"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="wrap_content"
+            android:id="@+id/q3op1"
+            android:textSize="14sp"
+            android:text="Yes"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="wrap_content"
+            android:text="No"
+            android:textSize="14sp"
+            android:id="@+id/q3op2"
+            android:layout_height="wrap_content"/>
+
+    </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Which of the following apply to you?"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:layout_gravity="start"
+                android:layout_height="wrap_content"/>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:id="@+id/question4"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:layout_width="wrap_content"
+                    android:id="@+id/q4op1"
+                    android:textSize="14sp"
+                    android:text="I have recently interacted or lived with someone who has tested positive for COVID-19"
+                    android:layout_height="wrap_content"/>
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:layout_width="wrap_content"
+                    android:text="I am healthcare worker and I examined a COVID-19 confirmed case without protective gear"
+                    android:id="@+id/q4op2"
+                    android:textSize="14sp"
+                    android:layout_height="wrap_content"/>
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:layout_width="wrap_content"
+                    android:text="None of the above"
+                    android:textSize="14sp"
+                    android:id="@+id/q4op3"
+                    android:layout_height="wrap_content"/>
+
+            </RadioGroup>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:text="Submit"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

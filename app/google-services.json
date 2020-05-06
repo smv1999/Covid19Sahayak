@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "71221984261",
+    "firebase_url": "https://covid19-sahayak.firebaseio.com",
+    "project_id": "covid19-sahayak",
+    "storage_bucket": "covid19-sahayak.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71221984261:android:b7cadf99d41a79caeff06c",
+        "android_client_info": {
+          "package_name": "com.programmersgateway.sm1999.covid19sahayak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "71221984261-ist2qc032brjm9jno8bc9mbkv9m37pk0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.programmersgateway.sm1999.covid19sahayak",
+            "certificate_hash": "7e66b1dba55d325fd3d99241e912fae7c93e3bdd"
+          }
+        },
+        {
+          "client_id": "71221984261-cl0u10acocb1shntvhq4h2vv05brrgtk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtoroakcr9Q0CLMeFQ2V5mFYuRdVX-Y6E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "71221984261-cl0u10acocb1shntvhq4h2vv05brrgtk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

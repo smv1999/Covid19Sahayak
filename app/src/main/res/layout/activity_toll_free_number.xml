@@ -45,6 +45,7 @@
             <ImageView
                 android:layout_width="64dp"
                 android:layout_height="64dp"
+                android:layout_gravity="center"
                 android:background="@drawable/cerclebackgroundpurple"
                 android:padding="10dp"
                 app:srcCompat="@drawable/ic_toll_free_black" />
@@ -93,6 +94,7 @@
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
+                    android:layout_gravity="center"
                     android:background="@drawable/cerclebackgroundpurple"
                     android:padding="10dp"
                     app:srcCompat="@drawable/ic_toll_free_black" />
@@ -149,6 +151,7 @@
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:background="@drawable/cerclebackgroundpurple"
+                android:layout_gravity="center"
                 android:padding="10dp"
                 app:srcCompat="@drawable/ic_toll_free_black" />
 
@@ -189,7 +192,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/deeppurple"
+                android:background="@color/light_yellow"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -197,6 +200,7 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/cerclebackgroundpurple"
+                    android:layout_gravity="center"
                     android:padding="10dp"
                     app:srcCompat="@drawable/ic_toll_free_black" />
 
@@ -212,7 +216,7 @@
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="State Helpline Numbers"
-                    android:textColor="@color/colorPurpleDark" />
+                    android:textColor="@color/dark_yellow" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:gravity="center"

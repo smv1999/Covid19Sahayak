@@ -2,6 +2,7 @@ package com.programmersgateway.sm1999.covid19sahayak;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.NotificationCompat;
@@ -16,6 +17,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -36,6 +38,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.model.Dash;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.programmersgateway.sm1999.covid19sahayak.network.ConnectionDetector;
 import com.programmersgateway.sm1999.covid19sahayak.network.Retrofit.RFInterface;
 import com.programmersgateway.sm1999.covid19sahayak.network.Retrofit.ResponseModels.dashboard.DashboardResponse;
@@ -63,6 +66,8 @@ public class DashboardActivity extends AppCompatActivity {
     NotificationCompat.Builder notificationBuilder;
     NotificationManager notificationManager;
     String NOTIFICATION_CHANNEL_ID;
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -101,6 +106,8 @@ public class DashboardActivity extends AppCompatActivity {
 
         View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
 
+        mAuth = FirebaseAuth.getInstance();
+
 
         // main menu items
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -115,6 +122,9 @@ public class DashboardActivity extends AppCompatActivity {
                         return true;
                     case R.id.medical_stores:
                         startActivity(new Intent(DashboardActivity.this,MedicalStoreWebView.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        return true;
+                    case R.id.hospitals:
+                        startActivity(new Intent(DashboardActivity.this,HospitalsWebView.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         return true;
                     case R.id.pm_cares_fund:
                         startActivity(new Intent(DashboardActivity.this,PMCaresFundActivity.class));
@@ -135,6 +145,9 @@ public class DashboardActivity extends AppCompatActivity {
                         return true;
                     case R.id.learn_more:
                         startActivity(new Intent(DashboardActivity.this,LearnMoreActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        return true;
+                    case R.id.self_assess:
+                        startActivity(new Intent(DashboardActivity.this,SelfAssessActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         return true;
                 }
                 return false;
@@ -420,6 +433,32 @@ public class DashboardActivity extends AppCompatActivity {
                 startActivity(new Intent(DashboardActivity.this,MainActivity.class));
                 return true;
 
+            case R.id.logout:
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(DashboardActivity.this);
+                builder1.setMessage("Are you sure to logout?");
+                builder1.setCancelable(true);
+
+                builder1.setPositiveButton(
+                        "Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                mAuth.signOut();
+                                startActivity(new Intent(DashboardActivity.this,LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
+                            }
+                        });
+
+                builder1.setNegativeButton(
+                        "No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+                return true;
             default:
                 return actionBarDrawerToggle.onOptionsItemSelected(item);
         }

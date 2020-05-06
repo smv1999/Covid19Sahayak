@@ -13,7 +13,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class MedicalStoreWebView extends AppCompatActivity {
+public class HospitalsWebView extends AppCompatActivity {
 
     private WebView mWebView;
     SharedPrefs sharedPrefs;
@@ -32,22 +32,22 @@ public class MedicalStoreWebView extends AppCompatActivity {
         }
         else
             setTheme(R.style.AppTheme);
-        setContentView(R.layout.activity_medical_store_web_view);
+        setContentView(R.layout.activity_hospitals_web_view);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mWebView = (WebView) findViewById(R.id.medicalstoreWebView);
+        mWebView = (WebView) findViewById(R.id.hospitalWebView);
         final WebSettings settings = mWebView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setBuiltInZoomControls(true);
-        final String url = "https://www.google.com/maps/search/medical+store+near+me/@13.0452436,80.1986642,15z/data=!3m1!4b1";
+        final String url = "https://www.google.com/maps/search/hospitals+nearby/@13.0377382,80.1849973,14z/data=!3m1!4b1";
         mWebView.loadUrl(url);
         // needed in order to support javascript alerts and other javascript operations
 
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
-                MedicalStoreWebView.this.setTitle("Medical Stores Nearby");
+                HospitalsWebView.this.setTitle("Hospitals Nearby");
             }
         });
     }

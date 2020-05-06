@@ -34,7 +34,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Intent i=new Intent(SplashScreenActivity.this,
-                        DashboardActivity.class);
+                        LoginActivity.class);
                 //Intent is used to switch from one activity to another.
 
                 startActivity(i);
