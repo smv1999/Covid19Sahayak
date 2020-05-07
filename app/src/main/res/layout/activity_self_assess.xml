@@ -17,6 +17,7 @@
 
     <TextView
         android:layout_width="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_gravity="start"
         android:textSize="16sp"
         android:layout_marginTop="20dp"
@@ -28,6 +29,7 @@
         android:text="Are you experiencing any of the following symptoms?"
         android:layout_marginTop="10dp"
         android:layout_gravity="start"
+        android:layout_marginStart="8dp"
         android:textSize="16sp"
         android:layout_height="wrap_content"/>
 
@@ -68,6 +70,7 @@
         android:layout_width="wrap_content"
         android:text="Have you ever had any of the following?"
         android:layout_marginTop="10dp"
+        android:layout_marginStart="8dp"
         android:textSize="16sp"
         android:layout_gravity="start"
         android:layout_height="wrap_content"/>
@@ -118,6 +121,7 @@
         android:layout_marginTop="10dp"
         android:layout_gravity="start"
         android:textSize="16sp"
+        android:layout_marginStart="8dp"
         android:layout_height="wrap_content"/>
 
     <RadioGroup
@@ -145,6 +149,7 @@
                 android:text="Which of the following apply to you?"
                 android:layout_marginTop="10dp"
                 android:textSize="16sp"
+                android:layout_marginStart="8dp"
                 android:layout_gravity="start"
                 android:layout_height="wrap_content"/>
 
@@ -178,10 +183,16 @@
                 android:layout_width="wrap_content"
                 android:text="Submit"
                 android:layout_marginTop="20dp"
+                android:id="@+id/submit"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"/>
 
 
         </LinearLayout>
     </ScrollView>
+    <ProgressBar
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/progressBar"
+        android:layout_centerInParent="true"/>
 </RelativeLayout>

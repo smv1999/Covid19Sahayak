@@ -26,6 +26,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.TextAppearanceSpan;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -67,7 +69,6 @@ public class DashboardActivity extends AppCompatActivity {
     NotificationManager notificationManager;
     String NOTIFICATION_CHANNEL_ID;
     private FirebaseAuth mAuth;
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -107,6 +108,30 @@ public class DashboardActivity extends AppCompatActivity {
         View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
 
         mAuth = FirebaseAuth.getInstance();
+
+
+        if(dark==1)
+        {
+            Menu menu = navigationView.getMenu();
+
+            MenuItem tools= menu.findItem(R.id.funds_and_helpline);
+            SpannableString s = new SpannableString(tools.getTitle());
+            s.setSpan(new TextAppearanceSpan(this, R.style.TextAppearance44), 0, s.length(), 0);
+            tools.setTitle(s);
+
+            MenuItem maps = menu.findItem(R.id.essentials_and_maps);
+            SpannableString t = new SpannableString(maps.getTitle());
+            t.setSpan(new TextAppearanceSpan(this, R.style.TextAppearance44), 0, t.length(), 0);
+            maps.setTitle(t);
+
+            MenuItem settings = menu.findItem(R.id.settings_and_more);
+            SpannableString u = new SpannableString(settings.getTitle());
+            u.setSpan(new TextAppearanceSpan(this, R.style.TextAppearance44), 0, u.length(), 0);
+            settings.setTitle(u);
+
+
+
+        }
 
 
         // main menu items

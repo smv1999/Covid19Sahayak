@@ -17,11 +17,29 @@
         android:id="@+id/self_assess"
         />
 
+    <item
+        android:id="@+id/funds_and_helpline"
+        android:title="Funds and Helpline">
+    <menu>
     <item android:title="Toll Free Number"
         android:icon="@drawable/ic_toll_free_number"
         android:id="@+id/toll_free"
         />
+     <item
+        android:id="@+id/pm_cares_fund"
+        android:icon="@drawable/rupee"
+        android:title="PM CARES Fund"/>
 
+      <item
+        android:id="@+id/register"
+        android:icon="@drawable/ic_person"
+        android:title="Join as Volunteer"/>
+    </menu>
+    </item>
+    <item
+        android:id="@+id/essentials_and_maps"
+        android:title="Essentials and Maps">
+     <menu>
     <item
         android:id="@+id/medical_stores"
         android:icon="@drawable/ic_search"
@@ -32,21 +50,17 @@
         android:icon="@drawable/ic_hospital"
         android:title="Hospitals Nearby"/>
 
-    <item
-        android:id="@+id/pm_cares_fund"
-        android:icon="@drawable/rupee"
-        android:title="PM CARES Fund"/>
-
-    <item
-        android:id="@+id/register"
-        android:icon="@drawable/ic_person"
-        android:title="Join as Volunteer"/>
-
-    <item
+     <item
         android:id="@+id/coronamap"
         android:icon="@drawable/locationicon"
         android:title="Cornonavirus Map"/>
 
+     </menu>
+    </item>
+
+    <item android:title="Settings and More"
+        android:id="@+id/settings_and_more">
+     <menu>
     <item
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_settings"
@@ -56,6 +70,6 @@
         android:id="@+id/learn_more"
         android:icon="@drawable/learn_more"
         android:title="Learn More"/>
-
-
+     </menu>
+    </item>
 </menu>
