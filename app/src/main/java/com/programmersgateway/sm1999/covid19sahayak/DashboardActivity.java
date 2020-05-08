@@ -174,6 +174,9 @@ public class DashboardActivity extends AppCompatActivity {
                     case R.id.self_assess:
                         startActivity(new Intent(DashboardActivity.this,SelfAssessActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         return true;
+                    case R.id.prevention:
+                        startActivity(new Intent(DashboardActivity.this,PreventionActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        return true;
                 }
                 return false;
             }

@@ -12,7 +12,16 @@
         android:roundIcon="@mipmap/ic_coronavirus"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SelfAssessActivity"></activity>
+        <activity android:name=".PreventionActivity"></activity>
+        <activity
+            android:name=".WelcomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" >
+
+        </activity>
+        <activity
+            android:name=".SelfAssessActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".VerifyNumberActivity"
             android:screenOrientation="portrait" />

@@ -17,4 +17,23 @@
     <string name="drawer_close">Drawer Close</string>
     <string name="base_url">https://api.covid19india.org/</string>
     <string name="title_activity_medical_stores">Map</string>
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">COVID-19</string>
+    <string name="slide_1_desc">Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.</string>
+
+    <string name="slide_2_title">Sick?</string>
+    <string name="slide_2_desc">Call the helpline or visit the nearest health center.</string>
+
+    <string name="slide_3_title">Wear Masks</string>
+    <string name="slide_3_desc">Stay Home. Go out only if necessary and wear masks.</string>
+
+    <string name="slide_4_title">Work from Home.</string>
+    <string name="slide_4_desc">Work from Home has become the new norm.</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
 </resources>

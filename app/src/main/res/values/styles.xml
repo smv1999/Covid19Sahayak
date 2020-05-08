@@ -16,5 +16,7 @@
     <style name="TextAppearance44">
         <item name="android:textColor">#808080</item>
     </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
 
+    <style name="AppTheme.PopupOverlay" parent="Theme.MaterialComponents.Light" />
 </resources>

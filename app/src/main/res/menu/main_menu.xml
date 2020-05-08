@@ -17,6 +17,11 @@
         android:id="@+id/self_assess"
         />
 
+    <item android:title="Prevention"
+        android:icon="@drawable/prevention"
+        android:id="@+id/prevention"
+        />
+
     <item
         android:id="@+id/funds_and_helpline"
         android:title="Funds and Helpline">
@@ -47,7 +52,7 @@
 
     <item
         android:id="@+id/hospitals"
-        android:icon="@drawable/ic_hospital"
+        android:icon="@drawable/hospital"
         android:title="Hospitals Nearby"/>
 
      <item

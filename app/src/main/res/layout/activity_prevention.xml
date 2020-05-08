@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PreventionActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="150dp"
+        android:src="@drawable/coronavirus_anim"
+        android:layout_gravity="center"
+        android:id="@+id/coronavirus"
+        android:layout_marginTop="30dp"
+        android:layout_height="150dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:src="@drawable/prevention2"
+            android:layout_gravity="center"
+            android:id="@+id/prevention2"
+            android:layout_margin="10dp"
+            android:layout_height="150dp"/>
+        <ImageView
+            android:layout_width="150dp"
+            android:src="@drawable/prevention1"
+            android:id="@+id/prevention1"
+            android:layout_gravity="center"
+            android:layout_height="150dp"/>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Clean your hands often. Use soap and water, or an alcohol-based hand rub."
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:src="@drawable/prevention3"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:id="@+id/prevention3"
+        android:layout_height="150dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Cover mouth and nose with mask and make sure there are no gaps between your face and the mask."
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:src="@drawable/prevention4"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:id="@+id/prevention4"
+        android:layout_height="150dp"/>
+
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Don't shake hands, say Namaste."
+        android:layout_height="wrap_content"/>
+
+
+        <VideoView
+            android:layout_width="match_parent"
+            android:id="@+id/videoView"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
