@@ -162,6 +162,11 @@ public class DashboardActivity extends AppCompatActivity {
                         Intent reg = new Intent(Intent.ACTION_VIEW, uri);
                         startActivity(reg);
                         return true;
+                    case R.id.latest_news:
+                        Uri news = Uri.parse("https://news.google.com/topics/CAAqBwgKMMqAmAsw9KmvAw?hl=en-IN&gl=IN&ceid=IN%3Aen");
+                        Intent newsintent = new Intent(Intent.ACTION_VIEW, news);
+                        startActivity(newsintent);
+                        return true;
                     case R.id.coronamap:
                         startActivity(new Intent(DashboardActivity.this,CoronavirusMapActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         return true;

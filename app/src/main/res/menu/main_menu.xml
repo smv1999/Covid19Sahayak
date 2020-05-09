@@ -22,6 +22,12 @@
         android:id="@+id/prevention"
         />
 
+    <item android:title="Latest News"
+        android:icon="@drawable/news_icon"
+        android:id="@+id/latest_news"
+        />
+
+
     <item
         android:id="@+id/funds_and_helpline"
         android:title="Funds and Helpline">
