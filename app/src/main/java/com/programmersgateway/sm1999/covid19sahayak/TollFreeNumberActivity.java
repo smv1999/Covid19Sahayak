@@ -82,13 +82,6 @@ public class TollFreeNumberActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.toll_free_number:
-//                if (ContextCompat.checkSelfPermission( this, Manifest.permission.CALL_PHONE ) != PackageManager.PERMISSION_GRANTED )
-//                {
-//                    ActivityCompat.requestPermissions(
-//                            this,
-//                            new String [] { Manifest.permission.CALL_PHONE },CALL_CODE
-//                    );
-//                }
                 Intent toll_intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "+91 1075"));
                 startActivity(toll_intent);
                 break;

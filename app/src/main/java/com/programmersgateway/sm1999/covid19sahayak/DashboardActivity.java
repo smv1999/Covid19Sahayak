@@ -5,9 +5,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.Manifest;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.app.Dialog;
@@ -19,6 +21,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.RingtoneManager;
@@ -26,6 +30,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.SpannableString;
 import android.text.style.TextAppearanceSpan;
 import android.view.Menu;
@@ -38,7 +43,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.google.android.gms.maps.model.Dash;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.programmersgateway.sm1999.covid19sahayak.network.ConnectionDetector;
@@ -128,8 +132,21 @@ public class DashboardActivity extends AppCompatActivity {
             SpannableString u = new SpannableString(settings.getTitle());
             u.setSpan(new TextAppearanceSpan(this, R.style.TextAppearance44), 0, u.length(), 0);
             settings.setTitle(u);
-
-
+            int[] colors = new int[] {
+                    Color.WHITE,
+                    Color.WHITE,
+                    Color.WHITE,
+                    Color.WHITE
+            };
+            int [][] states = new int [][]{
+                    new int[] { android.R.attr.state_enabled, -android.R.attr.state_pressed, -android.R.attr.state_selected}, // enabled
+                    new int[] {-android.R.attr.state_enabled}, // disabled
+                    new int[] {android.R.attr.state_enabled, android.R.attr.state_selected}, // selected
+                    new int[] {android.R.attr.state_enabled, android.R.attr.state_pressed}  // pressed
+            };
+            navigationView.setBackgroundColor(getResources().getColor(R.color.black));
+            navigationView.setItemTextColor(new ColorStateList(states,colors));
+            navigationView.setItemIconTintList(new ColorStateList(states,colors));
 
         }
 
@@ -146,11 +163,17 @@ public class DashboardActivity extends AppCompatActivity {
                         startActivity(new Intent(DashboardActivity.this,SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         return true;
                     case R.id.medical_stores:
-                        startActivity(new Intent(DashboardActivity.this,MedicalStoreWebView.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                        return true;
+//                            startActivity(new Intent(DashboardActivity.this,MedicalStoreWebView.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                            Uri ms = Uri.parse("https://www.google.com/maps/search/medical+store+near+me/");
+                            Intent msintent = new Intent(Intent.ACTION_VIEW, ms);
+                            startActivity(msintent);
+                            return true;
                     case R.id.hospitals:
-                        startActivity(new Intent(DashboardActivity.this,HospitalsWebView.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                        return true;
+//                            startActivity(new Intent(DashboardActivity.this,HospitalsWebView.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        Uri hn = Uri.parse("https://www.google.com/maps/search/hospitals+nearby/");
+                        Intent hnintent = new Intent(Intent.ACTION_VIEW, hn);
+                        startActivity(hnintent);
+                            return true;
                     case R.id.pm_cares_fund:
                         startActivity(new Intent(DashboardActivity.this,PMCaresFundActivity.class));
                         return true;
@@ -468,7 +491,7 @@ public class DashboardActivity extends AppCompatActivity {
 
             case R.id.logout:
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(DashboardActivity.this);
-                builder1.setMessage("Are you sure to logout?");
+                builder1.setMessage(Html.fromHtml("<font color='#000000'>Are you sure to logout?</font>"));
                 builder1.setCancelable(true);
 
                 builder1.setPositiveButton(

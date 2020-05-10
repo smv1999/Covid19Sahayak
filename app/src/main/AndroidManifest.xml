@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -12,12 +14,11 @@
         android:roundIcon="@mipmap/ic_coronavirus"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PreventionActivity"></activity>
+        <activity android:name=".PreventionActivity" android:screenOrientation="portrait"></activity>
         <activity
             android:name=".WelcomeActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" >
-
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name=".SelfAssessActivity"
@@ -30,9 +31,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".LoginActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".HospitalsWebView"
             android:screenOrientation="portrait" />
         <activity
             android:name=".NotificationActivity"
@@ -52,9 +50,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".KarnatakaDashboardActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".MedicalStoreWebView"
             android:screenOrientation="portrait" />
         <activity
             android:name=".PMCaresFundActivity"

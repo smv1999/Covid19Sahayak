@@ -11,7 +11,7 @@
     <item
         android:id="@+id/global_cases"
         android:icon="@drawable/globeimage"
-        android:title="Globe"
+        android:title="Global Cases"
         app:showAsAction="ifRoom" />
 
     <item android:id="@+id/refreshDashboard"

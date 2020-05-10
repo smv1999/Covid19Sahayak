@@ -33,6 +33,7 @@
         android:layout_height="40dp"
         android:text="Ok"
         android:id="@+id/btn_dialog"
+        android:backgroundTint="#808080"
         android:gravity="center_vertical|center_horizontal"
         android:layout_below="@+id/text_dialog"
         android:layout_marginBottom="20dp"
