@@ -15,7 +15,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-public class CoronavirusMapActivity extends AppCompatActivity {
+public class WorldCasesActivity extends AppCompatActivity {
 
     private WebView mWebView;
     SharedPrefs sharedPrefs;
@@ -35,17 +35,17 @@ public class CoronavirusMapActivity extends AppCompatActivity {
         }
         else
             setTheme(R.style.AppTheme);
-        setContentView(R.layout.activity_coronavirus_map);
+        setContentView(R.layout.activity_world_cases);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mWebView = (WebView) findViewById(R.id.coronamapWebView);
+        mWebView = (WebView) findViewById(R.id.worldcasesWebView);
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
         final WebSettings settings = mWebView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setBuiltInZoomControls(true);
-        final String url = "https://news.google.com/covid19/map?hl=en-IN&gl=IN&ceid=IN:en";
+        final String url = "https://covid19.who.int/";
         mWebView.loadUrl(url);
         // needed in order to support javascript alerts and other javascript operations
 
@@ -53,7 +53,7 @@ public class CoronavirusMapActivity extends AppCompatActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 progressBar.setVisibility(View.GONE);
-                CoronavirusMapActivity.this.setTitle("Coronavirus Map");
+                WorldCasesActivity.this.setTitle("About Covid-19");
             }
         });
     }

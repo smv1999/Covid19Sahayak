@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -20,6 +23,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Locale;
+
 public class SelfAssessActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -31,6 +36,7 @@ public class SelfAssessActivity extends AppCompatActivity {
     MaterialButton submit;
     RadioGroup q1,q2,q3,q4;
     MaterialRadioButton answer1,answer2,answer3,answer4;
+    TextToSpeech tts;
     int dark = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,6 +160,48 @@ public class SelfAssessActivity extends AppCompatActivity {
         });
 
         dialog.show();
+        speechAction(msg);
 
+    }
+    private void ConvertTextToSpeech(String text) {
+        if(text==null||"".equals(text))
+        {
+            text = "Content not available";
+//            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                tts.speak(text, TextToSpeech.QUEUE_FLUSH,null,null);
+            } else {
+                tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+            }
+        }else
+//            tts.speak(text+" ", TextToSpeech.QUEUE_FLUSH, null);
+        {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                tts.speak(text,TextToSpeech.QUEUE_FLUSH,null,null);
+            } else {
+                tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+            }
+        }
+    }
+    private void speechAction(final String s){
+
+        tts = new TextToSpeech(SelfAssessActivity.this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+
+                if(status == TextToSpeech.SUCCESS){
+                    int result=tts.setLanguage(Locale.US);
+                    if(result==TextToSpeech.LANG_MISSING_DATA ||
+                            result==TextToSpeech.LANG_NOT_SUPPORTED){
+                    }
+                    else{
+                        ConvertTextToSpeech(s);
+                    }
+                }
+                else
+                    Log.e("error", "Initilization Failed!");
+            }
+
+        });
     }
 }

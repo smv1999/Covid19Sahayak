@@ -30,9 +30,11 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.text.Html;
 import android.text.SpannableString;
 import android.text.style.TextAppearanceSpan;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -51,6 +53,7 @@ import com.programmersgateway.sm1999.covid19sahayak.network.Retrofit.ResponseMod
 import com.programmersgateway.sm1999.covid19sahayak.network.Utility;
 
 import java.io.Serializable;
+import java.util.Locale;
 
 import retrofit2.Response;
 
@@ -73,6 +76,8 @@ public class DashboardActivity extends AppCompatActivity {
     NotificationManager notificationManager;
     String NOTIFICATION_CHANNEL_ID;
     private FirebaseAuth mAuth;
+    TextToSpeech tts;
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -178,7 +183,10 @@ public class DashboardActivity extends AppCompatActivity {
                         startActivity(new Intent(DashboardActivity.this,PMCaresFundActivity.class));
                         return true;
                     case R.id.world_cases:
-                        startActivity(new Intent(DashboardActivity.this,MainActivity.class));
+                        startActivity(new Intent(DashboardActivity.this,WorldCasesActivity.class));
+                        return true;
+                    case R.id.karnataka_dashboard:
+                        startActivity(new Intent(DashboardActivity.this,KarnatakaDashboardActivity.class));
                         return true;
                     case R.id.register:
                         Uri uri = Uri.parse("https://self4society.mygov.in/");
@@ -251,7 +259,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         Uri alarmSound = getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
-        Intent notificationIntent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent notificationIntent = new Intent(getApplicationContext(), WorldCasesActivity.class);
 
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
@@ -261,7 +269,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
 
-        String message = "Catch up the live updates about covid-19. Total death toll in India reaches "+dashboardResponse.getStatewise().get(0).getDeaths()+" Click to see the World Cases!";
+        String message = "Catch up the live updates about covid-19. Total death toll in India reaches "+dashboardResponse.getStatewise().get(0).getDeaths()+". Click to see the World Cases!";
 
         notificationBuilder.setAutoCancel(true)
                 .setDefaults(Notification.DEFAULT_ALL)
@@ -280,6 +288,8 @@ public class DashboardActivity extends AppCompatActivity {
 
 
         notificationManager.notify(1, notificationBuilder.build()); /*notification id*/
+
+       
     }
 
     public void showdialog(String msg,int dark_theme){
@@ -299,7 +309,7 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Go to Karnataka Dashboard
-               startActivity(new Intent(DashboardActivity.this,KarnatakaDashboardActivity.class));
+                startActivity(new Intent(DashboardActivity.this,KarnatakaDashboardActivity.class));
             }
         });
 
@@ -486,7 +496,7 @@ public class DashboardActivity extends AppCompatActivity {
                 }
                 return true;
             case R.id.global_cases:
-                startActivity(new Intent(DashboardActivity.this,MainActivity.class));
+                startActivity(new Intent(DashboardActivity.this,WorldCasesActivity.class));
                 return true;
 
             case R.id.logout:
@@ -519,6 +529,5 @@ public class DashboardActivity extends AppCompatActivity {
                 return actionBarDrawerToggle.onOptionsItemSelected(item);
         }
     }
-
 
 }

@@ -7,6 +7,11 @@
         android:id="@+id/about"
         />
 
+    <item android:title="Karnataka Dashboard"
+        android:icon="@drawable/ic_dashboard"
+        android:id="@+id/karnataka_dashboard"
+        />
+
     <item android:title="World Cases"
         android:icon="@drawable/globeicon"
         android:id="@+id/world_cases"

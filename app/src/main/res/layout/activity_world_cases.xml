@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WebViewActivity">
+    tools:context=".WorldCasesActivity">
 
     <WebView
-        android:id="@+id/karnatakaWebView"
+        android:id="@+id/worldcasesWebView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
@@ -16,4 +16,5 @@
         android:layout_height="80dp"
         android:id="@+id/progressBar"
         android:layout_centerInParent="true"/>
+
 </RelativeLayout>

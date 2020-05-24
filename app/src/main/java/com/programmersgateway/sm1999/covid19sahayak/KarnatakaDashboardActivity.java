@@ -15,6 +15,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class KarnatakaDashboardActivity extends AppCompatActivity {
@@ -22,6 +23,7 @@ public class KarnatakaDashboardActivity extends AppCompatActivity {
     private WebView mWebView;
     SharedPrefs sharedPrefs;
     int dark = 0;
+    private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,8 @@ public class KarnatakaDashboardActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mWebView = (WebView) findViewById(R.id.karnatakaWebView);
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
         final WebSettings settings = mWebView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setBuiltInZoomControls(true);
@@ -53,6 +57,7 @@ public class KarnatakaDashboardActivity extends AppCompatActivity {
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
+                progressBar.setVisibility(View.GONE);
                 KarnatakaDashboardActivity.this.setTitle("Karnataka Dashboard");
             }
         });

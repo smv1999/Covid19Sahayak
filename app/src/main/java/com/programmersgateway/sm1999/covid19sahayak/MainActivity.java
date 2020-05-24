@@ -392,6 +392,7 @@ public class MainActivity extends AppCompatActivity {
                             cols = row.select("th");
                             //Log.e("COLS: ", cols.text());
                             if (cols.get(0).text().contains("Country")) {
+
                                 for(int i=1; i < cols.size(); i++){
                                     if (cols.get(i).text().contains("Total") && cols.get(i).text().contains("Cases"))
                                     {colNumCases = i; Log.e("Cases: ", cols.get(i).text());}
