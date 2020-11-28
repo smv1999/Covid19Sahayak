@@ -185,9 +185,9 @@ public class DashboardActivity extends AppCompatActivity {
                     case R.id.world_cases:
                         startActivity(new Intent(DashboardActivity.this,WorldCasesActivity.class));
                         return true;
-                    case R.id.karnataka_dashboard:
-                        startActivity(new Intent(DashboardActivity.this,KarnatakaDashboardActivity.class));
-                        return true;
+//                    case R.id.karnataka_dashboard:
+//                        startActivity(new Intent(DashboardActivity.this,KarnatakaDashboardActivity.class));
+//                        return true;
                     case R.id.register:
                         Uri uri = Uri.parse("https://self4society.mygov.in/");
                         Intent reg = new Intent(Intent.ACTION_VIEW, uri);
@@ -233,8 +233,7 @@ public class DashboardActivity extends AppCompatActivity {
             finish();
         }
 
-        showdialog("Have a look at the Covid updates of Karnataka.",dark);
-
+        //showdialog("Have a look at the Covid updates of Karnataka.",dark);
 
     }
 
@@ -292,30 +291,30 @@ public class DashboardActivity extends AppCompatActivity {
        
     }
 
-    public void showdialog(String msg,int dark_theme){
-        final Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(true);
-        if (dark_theme==1)
-            dialog.setContentView(R.layout.dialog_dark);
-        else
-            dialog.setContentView(R.layout.dialog);
-
-        TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
-        text.setText(msg);
-
-        Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
-        dialogButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Go to Karnataka Dashboard
-                startActivity(new Intent(DashboardActivity.this,KarnatakaDashboardActivity.class));
-            }
-        });
-
-        dialog.show();
-
-    }
+//    public void showdialog(String msg,int dark_theme){
+//        final Dialog dialog = new Dialog(this);
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        dialog.setCancelable(true);
+//        if (dark_theme==1)
+//            dialog.setContentView(R.layout.dialog_dark);
+//        else
+//            dialog.setContentView(R.layout.dialog);
+//
+//        TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
+//        text.setText(msg);
+//
+//        Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
+//        dialogButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Go to Karnataka Dashboard
+//                startActivity(new Intent(DashboardActivity.this,KarnatakaDashboardActivity.class));
+//            }
+//        });
+//
+//        dialog.show();
+//
+//    }
 
     public void pulsatingEffect(CardView cardView)
     {
@@ -499,32 +498,32 @@ public class DashboardActivity extends AppCompatActivity {
                 startActivity(new Intent(DashboardActivity.this,WorldCasesActivity.class));
                 return true;
 
-            case R.id.logout:
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(DashboardActivity.this);
-                builder1.setMessage(Html.fromHtml("<font color='#000000'>Are you sure to logout?</font>"));
-                builder1.setCancelable(true);
-
-                builder1.setPositiveButton(
-                        "Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                mAuth.signOut();
-                                startActivity(new Intent(DashboardActivity.this,LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
-
-                            }
-                        });
-
-                builder1.setNegativeButton(
-                        "No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-
-                AlertDialog alert11 = builder1.create();
-                alert11.show();
-                return true;
+//            case R.id.logout:
+//                AlertDialog.Builder builder1 = new AlertDialog.Builder(DashboardActivity.this);
+//                builder1.setMessage(Html.fromHtml("<font color='#000000'>Are you sure to logout?</font>"));
+//                builder1.setCancelable(true);
+//
+//                builder1.setPositiveButton(
+//                        "Yes",
+//                        new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int id) {
+//                                mAuth.signOut();
+//                                startActivity(new Intent(DashboardActivity.this,LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
+//
+//                            }
+//                        });
+//
+//                builder1.setNegativeButton(
+//                        "No",
+//                        new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int id) {
+//                                dialog.cancel();
+//                            }
+//                        });
+//
+//                AlertDialog alert11 = builder1.create();
+//                alert11.show();
+//                return true;
             default:
                 return actionBarDrawerToggle.onOptionsItemSelected(item);
         }

@@ -34,6 +34,10 @@
     <string name="slide_4_title">Work from Home.</string>
     <string name="slide_4_desc">Work from Home has become the new norm.</string>
 
+    <string name="slide_5_title">Dark Mode</string>
+    <string name="slide_5_desc">Enjoy the classic dark mode! Enable it in the settings</string>
+
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
+    <string name="version_of_app">Version 1.0.1</string>
 </resources>

@@ -7,10 +7,10 @@
         android:id="@+id/about"
         />
 
-    <item android:title="Karnataka Dashboard"
-        android:icon="@drawable/ic_dashboard"
-        android:id="@+id/karnataka_dashboard"
-        />
+<!--    <item android:title="Karnataka Dashboard"-->
+<!--        android:icon="@drawable/ic_dashboard"-->
+<!--        android:id="@+id/karnataka_dashboard"-->
+<!--        />-->
 
     <item android:title="World Cases"
         android:icon="@drawable/globeicon"
@@ -69,7 +69,7 @@
      <item
         android:id="@+id/coronamap"
         android:icon="@drawable/locationicon"
-        android:title="Cornonavirus Map"/>
+        android:title="Coronavirus Map"/>
 
      </menu>
     </item>

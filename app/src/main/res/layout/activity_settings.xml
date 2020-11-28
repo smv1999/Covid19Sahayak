@@ -7,8 +7,23 @@
     tools:context=".SettingsActivity"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:layout_width="120dp"
+        android:src="@drawable/coronavirus"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_height="120dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="@string/version_of_app"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="wrap_content"/>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
         android:layout_height="wrap_content">
 
         <LinearLayout
@@ -60,33 +75,6 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_marginTop="8dp"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:padding="10dp"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="@string/title_version"
-                android:textStyle="bold"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="@string/app_version"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content"/>
-
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -134,30 +122,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:text="@string/privacy_policy"
-                android:textStyle="bold"
-                android:linksClickable="true"
-                android:autoLink="web"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_marginTop="8dp"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:padding="10dp"
-            android:orientation="vertical"
-            android:id="@+id/terms"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:text="@string/title_terms"
                 android:textStyle="bold"
                 android:linksClickable="true"
                 android:autoLink="web"

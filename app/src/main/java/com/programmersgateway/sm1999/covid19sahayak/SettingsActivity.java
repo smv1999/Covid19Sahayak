@@ -19,7 +19,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     Switch mode;
     SharedPrefs sharedPrefs;
-    LinearLayout feedback,privacy_policy,terms;
+    LinearLayout feedback,privacy_policy;
     int dark = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,25 +76,18 @@ public class SettingsActivity extends AppCompatActivity {
         feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=com.programmersgateway.sm1999.befit");
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto","devteamprogrammersgateway@gmail.com", null));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Issue Report - Covid-19 Sahayak");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, "I would like to bring the following about Covid-19 Sahayak to your notice:");
+                startActivity(Intent.createChooser(emailIntent, "Send email..."));
             }
         });
         privacy_policy = findViewById(R.id.privacy_policy);
         privacy_policy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("https://smv1999.github.io/be_fit_privacy_policy.html");
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
-        });
-        terms = findViewById(R.id.terms);
-        terms.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri uri = Uri.parse("https://smv1999.github.io/be_fit_terms_and_conditions.html");
+                Uri uri = Uri.parse("https://vaidhyanathansm.tech/privacy_policy_covid");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }

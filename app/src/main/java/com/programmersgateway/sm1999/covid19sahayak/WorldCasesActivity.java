@@ -53,7 +53,7 @@ public class WorldCasesActivity extends AppCompatActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 progressBar.setVisibility(View.GONE);
-                WorldCasesActivity.this.setTitle("About Covid-19");
+                WorldCasesActivity.this.setTitle("World Cases");
             }
         });
     }

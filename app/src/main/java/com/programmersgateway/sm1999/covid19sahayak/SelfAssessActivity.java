@@ -27,10 +27,10 @@ import java.util.Locale;
 
 public class SelfAssessActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference myRef;
+//    private FirebaseAuth mAuth;
+//    private FirebaseAuth.AuthStateListener mAuthListener;
+//    private FirebaseDatabase mFirebaseDatabase;
+//    private DatabaseReference myRef;
     private ProgressBar mProgressBar;
     SharedPrefs sharedPrefs;
     MaterialButton submit;
@@ -41,6 +41,7 @@ public class SelfAssessActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         sharedPrefs = new SharedPrefs(this);
         if(sharedPrefs.loadNightModeState())
         {
@@ -53,9 +54,9 @@ public class SelfAssessActivity extends AppCompatActivity {
         else
             setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_self_assess);
-        mAuth = FirebaseAuth.getInstance();
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        myRef = mFirebaseDatabase.getReference();
+//        mAuth = FirebaseAuth.getInstance();
+//        mFirebaseDatabase = FirebaseDatabase.getInstance();
+//        myRef = mFirebaseDatabase.getReference();
         submit = findViewById(R.id.submit);
         mProgressBar = findViewById(R.id.progressBar);
         mProgressBar.setVisibility(View.GONE);
@@ -84,7 +85,7 @@ public class SelfAssessActivity extends AppCompatActivity {
                 else
                 {
                     // radio buttons are checked
-                    if(mAuth.getCurrentUser() != null){
+//                    if(mAuth.getCurrentUser() != null){
 
                         int selectedId1 = q1.getCheckedRadioButtonId();
                         int selectedId2 = q2.getCheckedRadioButtonId();
@@ -99,30 +100,29 @@ public class SelfAssessActivity extends AppCompatActivity {
 
 
                         String a1 = answer1.getText().toString();
-                        myRef.child("Users")
-                                .child(mAuth.getCurrentUser().getUid())
-                                .child("Are you experiencing any of the following symptoms?")
-                                .setValue(a1);
+//                        myRef.child("Users")
+//                                .child(mAuth.getCurrentUser().getUid())
+//                                .child("Are you experiencing any of the following symptoms?")
+//                                .setValue(a1);
 
                         String a2 = answer2.getText().toString();
-                        myRef.child("Users")
-                                .child(mAuth.getCurrentUser().getUid())
-                                .child("Have you ever had any of the following?")
-                                .setValue(a2);
+//                        myRef.child("Users")
+//                                .child(mAuth.getCurrentUser().getUid())
+//                                .child("Have you ever had any of the following?")
+//                                .setValue(a2);
 
                         String a3 = answer3.getText().toString();
-                        myRef.child("Users")
-                                .child(mAuth.getCurrentUser().getUid())
-                                .child("Have you travelled anywhere internationally in the last 28-45 days?")
-                                .setValue(a3);
+//                        myRef.child("Users")
+//                                .child(mAuth.getCurrentUser().getUid())
+//                                .child("Have you travelled anywhere internationally in the last 28-45 days?")
+//                                .setValue(a3);
 
                         String a4 = answer4.getText().toString();
-                        myRef.child("Users")
-                                .child(mAuth.getCurrentUser().getUid())
-                                .child("Which of the following apply to you?")
-                                .setValue(a4);
+//                        myRef.child("Users")
+//                                .child(mAuth.getCurrentUser().getUid())
+//                                .child("Which of the following apply to you?")
+//                                .setValue(a4);
 
-                        Toast.makeText(SelfAssessActivity.this, "Data Submitted Successfully!", Toast.LENGTH_SHORT).show();
                         if(a1.equals("None of the above") && a2.equals("None of the above") && a3.equals("No")
                         && a4.equals("None of the above"))
                         {
@@ -130,8 +130,13 @@ public class SelfAssessActivity extends AppCompatActivity {
                                     "to the Novel Coronavirus. Retake the self assessment test if you develop symptoms or come " +
                                     "in contact with a COVID-19 confirmed patient.",dark);
                         }
+                        else{
+                            showdialog("Your infection risk is high. You compulsorily need to stay at home to avoid the chance of" +
+                                    " communal spread of the infection. It is advised to consult a doctor and take medical advice. If you are found " +
+                                    "to be asymptotic in the future, you can retake this assessment again.",dark);
+                        }
 
-                    }
+//                    }
 
                 }
 

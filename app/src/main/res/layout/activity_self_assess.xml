@@ -181,7 +181,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
-                android:text="Submit"
+                android:text="Check"
                 android:layout_marginTop="20dp"
                 android:id="@+id/submit"
                 android:fontFamily="casual"
@@ -192,8 +192,8 @@
         </LinearLayout>
     </ScrollView>
     <ProgressBar
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:id="@+id/progressBar"
         android:layout_centerInParent="true"/>
 </RelativeLayout>

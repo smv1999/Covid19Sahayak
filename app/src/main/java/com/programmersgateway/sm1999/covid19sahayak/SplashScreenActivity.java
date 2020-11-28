@@ -27,7 +27,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         //This method is used so that your splash activity
         //can cover the entire screen.
 
-        setContentView(R.layout.activity_splash_screen);
+        setContentView(R.layout.activity_splash_misc);
         //this will bind your MainActivity.class file with activity_main.
 
         new Handler().postDelayed(new Runnable() {
