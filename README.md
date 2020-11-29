@@ -7,7 +7,7 @@
 This is an android application that provides state level and world level updates on Covid-19. Some amazing features of the app includes:
 
 * Provides complete information about the virus
-* Self accessing module
+* Self assessing module
 * Live updates at the state and world level
 * Prevention and precautionary measures.
 * Latest News
