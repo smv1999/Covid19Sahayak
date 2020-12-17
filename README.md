@@ -1,6 +1,6 @@
 ## Covid-19 Sahayak
 
-![GitHub followers](https://img.shields.io/github/followers/smv1999?style=social)
+![GitHub followers](https://img.shields.io/github/followers/smv1999?style=for-the-badge)
 ![GitHub forks](https://img.shields.io/github/forks/smv1999/Covid19Sahayak?style=for-the-badge)
 ![GitHub Repo stars](https://img.shields.io/github/stars/smv1999/Covid19Sahayak?style=for-the-badge)
 ![Lines of code](https://img.shields.io/tokei/lines/github/smv1999/Covid19Sahayak?style=for-the-badge)
